@@ -5,21 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppZodiak"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Визначення знаку зодіаку" Height="500" Width="600" Background="#FFF3F3F3">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="576" Height="528" Orientation="Vertical" Background="#FF748DF1" >
-            <TextBlock Text="Вираховування знаку зодіаку" FontSize="14" Height="24" />
-            <StackPanel Height="120" Orientation="Horizontal" Background="#FFCE9A9A" >
-                <TextBlock Text="Оберіть дату народження" FontSize="14" VerticalAlignment="Center" />
-                <DatePicker Width="120" />
+        <Border CornerRadius="10" Background="#FF748DF1" Padding="20" Margin="20">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+                <TextBlock Text="Визначення знаку зодіаку" FontSize="18" FontWeight="Bold" Foreground="White" TextAlignment="Center"/>
+
+                <StackPanel Height="80" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                    <TextBlock Text="Оберіть дату народження:" FontSize="14" VerticalAlignment="Center" Foreground="White"/>
+                    <DatePicker Name="dataPicker" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                </StackPanel>
+
+                <Button Content="Розрахувати" Width="120" Height="36" Margin="10" Click="onClickCountZodiak" Background="#FF5555" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+
+                <Border Background="White" CornerRadius="8" Padding="10" Margin="20" Visibility="Hidden" Name="ResultPanel">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="З днем народження!" x:Name="CongratulaionText" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#333" Visibility="Hidden"/>
+                        <TextBlock Text="... років" x:Name="AgeResult" FontSize="16" HorizontalAlignment="Center" Foreground="#555"/>
+                        <TextBlock Text="... зодіак" x:Name="ZodiacResult" FontSize="16" HorizontalAlignment="Center" Foreground="#555"/>
+                        <TextBlock Text="... китайський зодіак" x:Name="ChineseZodiacResult" FontSize="16" HorizontalAlignment="Center" Foreground="#555"/>
+                    </StackPanel>
+                </Border>
             </StackPanel>
-            <Button Content="Button" Height="32" />
-            <StackPanel Orientation="Vertical" Background="LightGray" Margin="20" >
-                <TextBlock Text="З днем народження" FontSize="14" HorizontalAlignment="Center" />
-                <TextBlock x:Name="AgeResult" FontSize="16" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="ZodiacResult" FontSize="16" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="ChineseZodiacResult" FontSize="16" HorizontalAlignment="Center"/>
-            </StackPanel>
-        </StackPanel>
+        </Border>
     </Grid>
 </Window>

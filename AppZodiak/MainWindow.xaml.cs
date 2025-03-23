@@ -38,7 +38,13 @@ namespace AppZodiak
         {
             if (dataPicker.SelectedDate == null)
             {
-                MessageBox.Show("Будь ласка, виберіть дату народження!", "Помилка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Виберіть дату народження!", "Помилка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (dataPicker.SelectedDate.Value > DateTime.Now)
+            {
+                MessageBox.Show("Виберіть коректну дату народження!", "Помилка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -57,7 +63,9 @@ namespace AppZodiak
             string zodiacSignResult = westernZodiac.getZodiacSign(birthDate);
             string chineseZodiacResult = chineseZodiac.getZodiacSign(birthDate);
 
-            AgeResult.Text = $"{age} років";
+            if (age == 0)
+                AgeResult.Text = "Менше року";
+            else AgeResult.Text = $"{age} років";
             ZodiacResult.Text = $"Знак зодіаку: {zodiacSignResult}";
             ChineseZodiacResult.Text = $"Китайський зодіак: {chineseZodiacResult}";
 
